@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/Style.css">
-    <link rel="shortcut icon" href="Images/Croqlife4_desk_white_ohnealpha.png">
+    <link rel="shortcut icon" href="Images/Owl_Shortcut.png">
     <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
@@ -15,10 +15,127 @@
     />
 </head>
 <body>
-    <div class="element">
-            <h1>Hello</h1>
+    <div class="element">          
+            <div class="layout-wrapper">
+                <div class="sidebar">
+                    <h4>/ FILTER</h4>
+                    
+                    <div class="filter-group">
+                        <h2>Type</h2>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="filter-type styles-checkbox" value="BLOG"> 
+                                <span class="checkmark"></span> Blog
+                            </label>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="filter-type" value="VIDEO"> 
+                                <span class="checkmark"></span> Video
+                            </label>
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="filter-type" value="GALLERY">
+                                <span class="checkmark"></span> Gallery
+                            </label>
+                    </div>
+            
+                </div>
+                
+                <div class="content">
+                    <div class="header">
+                        <div>/ DATE</div>
+                        <div>/ NAME</div>
+                        <div>/ TYPE</div>
+                    </div>
+                
+                    <div class="row" data-type="BLOG">
+                        <div>April 2025</div>
+                        <div>Owls in Slovenia</div>
+                        <div><span class="tag">BLOG</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden">
+                        <div><strong>Summary:</strong> A trip to Slovenia looking for owls in forest environments.</div>
+                        <div><strong>Author:</strong> Tinu</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+                
+                    <div class="row" data-type="BLOG">
+                        <div>April 2024</div>
+                        <div>Europes oldest Forest in Poland</div>
+                    <div><span class="tag">Blog</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden">
+                        <div><strong>Summary:</strong> A trip to the oldest Forest in Europe.</div>
+                        <div><strong>Author:</strong> Tinu</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+
+                    <div class="row" data-type="GALLERY">
+                        <div>April 2023</div>
+                        <div>Birding in Hungary</div>
+                    <div><span class="tag">Gallery</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden">
+                        <div><strong>Summary:</strong> A Birding trip to Hungary.</div>
+                        <div><strong>Author:</strong> Sam</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+
+                    <div class="row" data-type="GALLERY">
+                        <div>May 2022</div>
+                        <div>From Swizerland to Slovenia trough the Alps</div>
+                    <div><span class="tag">Gallery</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden">
+                        <div><strong>Summary:</strong> Our frist Hideguys trip.</div>
+                        <div><strong>Author:</strong> Tinu</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+
+                </div>
+            </div>     
     </div>
 
     <script src="JS/Main.js"></script>
+
+    <script>
+        const typeCheckboxes = document.querySelectorAll('.filter-type');
+        const rows = document.querySelectorAll('.row');
+    
+        function filterRows() {
+          const selectedTypes = Array.from(typeCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+    
+          rows.forEach(row => {
+            const rowType = row.dataset.type;
+            const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(rowType);
+            row.classList.toggle('hidden', !typeMatch);
+          });
+        }
+        typeCheckboxes.forEach(cb => cb.addEventListener('change', filterRows));
+    
+        const expandButtons = document.querySelectorAll('.expand');
+
+        expandButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const row = button.closest('.row');
+            const details = row.nextElementSibling;
+
+            // Optional: collapse other expanded rows
+            document.querySelectorAll('.details').forEach(detail => {
+            if (detail !== details) detail.classList.add('hidden');
+            });
+
+            // Toggle visibility
+            details.classList.toggle('hidden');
+
+            // Toggle "+" and "−"
+            button.textContent = details.classList.contains('hidden') ? '+' : '−';
+        });
+        });
+    </script>
+
 </body>
 </html>

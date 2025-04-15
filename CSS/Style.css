@@ -86,4 +86,185 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
     padding: 2em;
     background: var(--background);
     border: 12px solid var(--secondary);
+    position: relative;
 }
+
+/*Folderstructure*/
+
+.sidebar {
+    position: absolute;
+    top: 2em;
+    bottom: 2em;
+    left: 2em;
+    width: 250px;
+    overflow-y: auto;
+    background: var(--background);
+    border-right: 1px solid var(--secondary);
+  }
+
+  .sidebar h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .filter-group {
+    margin-bottom: 20px;
+  }
+
+  .filter-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .content {
+    flex: 1;
+    margin-left: calc(250px + 2em);
+    padding: 20px;
+  }
+
+  .header {
+    display: flex;
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary);
+  }
+
+  .header div, .row div {
+    flex: 1;
+    padding: 5px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--secondary);
+    font-size: 14px;
+  }
+
+  .tag {
+    background-color: var(--accent);
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .expand {
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 10px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .details {
+    padding: 1em;
+    border-left: 4px solid var(--secondary);
+    background-color: var(--background);
+    margin-bottom: 1em;
+    font-size: 14px;
+  }
+
+  .layout-wrapper { 
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+  }
+
+  .row:hover {
+    background-color: var(--secondary); /* Uses your defined secondary color */
+    cursor: pointer;                   /* Optional: shows it's interactive */
+    transition: background-color 0.3s ease; /* Smooth fade-in */
+  }
+
+  .read-button {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em 1.5em;
+    border: 1px solid var(--text);
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 2em;
+    transition: background-color 0.3s;
+  }
+  
+  .read-button:hover {
+    background-color: var(--accent);
+    color: var(--text);
+  }
+ 
+  /* Checkbox */
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-left: 28px;
+    line-height: 18px;
+  }
+  
+  /* Hide default checkbox */
+  .checkbox-wrapper input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Custom box */
+  .checkbox-wrapper .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: var(--background);
+    border: 2px solid var(--secondary);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primary);
+    transition: all 0.2s ease;
+  }
+  
+    /* X appears centered inside checkbox */
+  .checkbox-wrapper .checkmark::before {
+    content: "";
+    display: none;
+  }
+  
+  .checkbox-wrapper input:checked ~ .checkmark::before {
+    content: "X";
+    display: block;
+    position: static;
+    color: var(--background); /* or var(--primary) if you'd prefer */
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  /* Checked state */
+  .checkbox-wrapper input:checked ~ .checkmark {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+    box-shadow: 0 0 4px var(--accent);
+  }
+  
+  /* Add checkmark "✓" using pseudo-element */
+
+
+  .checkbox-wrapper:hover .checkmark {
+    border-color: var(--primary);
+  }
+  
