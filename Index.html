@@ -15,6 +15,37 @@
     />
 </head>
 <body>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="Images/Title.png" alt="Logo" class="logo">
+        </div>
+    </header>
+
+    <section class="intro-section">
+        <div class="intro-text">
+            <h2>Who are the Hideguys?</h2>
+            <p>We are a group of wildlife enthusiasts passionate about exploring Europe's wild spaces, documenting rare birdlife, and sharing immersive experiences from behind the lens. We travel, we hike, we wait, and we capture — welcome to our journey.</p>
+        </div>
+    
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="Images/Tinu.jpg" alt="Tinu">
+                <h4>Tinu</h4>
+                <p>Founder & Bird Guide<br>Specializes in forest owls and alpine raptors.</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/Sam.jpg" alt="Sam">
+                <h4>Sam</h4>
+                <p>Photographer & Explorer<br>Loves remote valleys, hides, and rare woodpeckers.</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/Tobi.jpg" alt="Tobi">
+                <h4>Tobi</h4>
+                <p>Logistics & Storyteller<br>Brings the human stories behind the scenes.</p>
+            </div>
+        </div>
+    </section>
+
     <div class="element">          
             <div class="layout-wrapper">
                 <div class="sidebar">
@@ -54,7 +85,7 @@
                     <div class="details hidden">
                         <div><strong>Summary:</strong> A trip to Slovenia looking for owls in forest environments.</div>
                         <div><strong>Author:</strong> Tinu</div>
-                        <a href="your-blog-link.html" class="read-button">Read</a>
+                        <a href="Owls in Slovenia.html" class="read-button">Read</a>
                     </div>
                 
                     <div class="row" data-type="BLOG">
@@ -131,11 +162,19 @@
             // Toggle visibility
             details.classList.toggle('hidden');
 
-            // Toggle "+" and "−"
-            button.textContent = details.classList.contains('hidden') ? '+' : '−';
         });
         });
     </script>
+    
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2022 Hideguys. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
