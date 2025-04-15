@@ -139,8 +139,9 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
 .team-grid {
     display: grid;
     gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
     justify-items: center;
+    justify-content: center;
 }
 
 .team-member {
