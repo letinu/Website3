@@ -136,6 +136,12 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
     line-height: 1.6;
 }
 
+.team-grid-wrapper {
+  max-width: 1200px; /* or whatever width looks good */
+  margin: 0 auto;
+  padding: 0 1rem; /* Add a little horizontal spacing */
+}
+
 .team-grid {
   display: grid;
   gap: 2em;
