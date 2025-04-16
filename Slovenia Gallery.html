@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="shortcut icon" href="Images/Owl_Shortcut.png">
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="Images/Title.png" alt="Logo" class="logo">
+        </div>
+    </header>
+
+    <section class="intro-section">
+        <div class="intro-text">
+            <h2>Friendly eyes hidden in the Forest</h2>
+            <p>The best shots from the Slovenia trip.</p>
+        </div>
+    </section>
+
+    <div class="element">
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openFullscreen(this)">
+              <img src="Images/Owl-1.jpg" alt="Forest Owl">
+              <div class="photo-meta" data-iso="2500" data-f="f/8.0" data-speed="1/125s" data-lens="500mm"></div>
+            </div>
+            <div class="gallery-item" onclick="openFullscreen(this)">
+              <img src="Images/Owl-2.jpg" alt="Hidden Eyes">
+              <div class="photo-meta" data-iso="3200" data-f="f/8.0" data-speed="1/320s" data-lens="500mm"></div>
+            </div>
+            <div class="gallery-item" onclick="openFullscreen(this)">
+              <img src="Images/Owl-3.jpg" alt="Night Watch">
+              <div class="photo-meta" data-iso="2000" data-f="f/8.0" data-speed="1/200s" data-lens="500mm"></div>
+            </div>
+          </div>
+          
+          <div id="fullscreen-view" class="fullscreen hidden" onclick="closeFullscreen()">
+            <div class="fullscreen-content">
+              <img id="fullscreen-img" src="" alt="">
+              <div id="photo-info" class="photo-info"></div>
+            </div>
+          </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2022 Hideguys. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openFullscreen(element) {
+          const imgSrc = element.querySelector('img').src;
+          const iso = element.querySelector('.photo-meta').dataset.iso;
+          const fVal = element.querySelector('.photo-meta').dataset.f;
+          const speed = element.querySelector('.photo-meta').dataset.speed;
+          const lens = element.querySelector('.photo-meta').dataset.lens;
+      
+          document.getElementById('fullscreen-img').src = imgSrc;
+          document.getElementById('photo-info').innerText = `ISO: ${iso} | Aperture: ${fVal} | Shutter: ${speed} | Lens: ${lens}`;
+          document.getElementById('fullscreen-view').classList.remove('hidden');
+        }
+      
+        function closeFullscreen() {
+          document.getElementById('fullscreen-view').classList.add('hidden');
+          document.getElementById('fullscreen-img').src = "";
+          document.getElementById('photo-info').innerText = "";
+        }
+      </script>
+      
+</body>
