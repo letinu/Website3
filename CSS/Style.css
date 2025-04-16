@@ -109,7 +109,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
 .logo {
     object-fit: contain;
     height: 55px;
-
+    background-color: transparent;
 }
 
 /*Intro-section*/
