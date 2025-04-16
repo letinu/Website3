@@ -160,27 +160,38 @@
     
         typeCheckboxes.forEach(cb => cb.addEventListener('change', filterRows));
     
-        // Make each .row clickable to toggle details
+        // Handle row click to toggle details and +/–
         rows.forEach(row => {
             row.addEventListener('click', () => {
                 const details = row.nextElementSibling;
-                if (details && details.classList.contains('details')) {
-                    // Optional: collapse other rows
-                    document.querySelectorAll('.details').forEach(detail => {
-                        if (detail !== details) detail.classList.add('hidden');
-                    });
+                const currentExpand = row.querySelector('.expand');
     
-                    // Toggle current
-                    details.classList.toggle('hidden');
-                }
+                if (!details || !details.classList.contains('details')) return;
+    
+                // Collapse all other details and reset their expand signs
+                document.querySelectorAll('.details').forEach(detail => {
+                    if (detail !== details) detail.classList.add('hidden');
+                });
+    
+                document.querySelectorAll('.expand').forEach(expand => {
+                    if (expand !== currentExpand) expand.textContent = '+';
+                });
+    
+                // Toggle current
+                const isOpen = !details.classList.contains('hidden');
+                details.classList.toggle('hidden');
+    
+                // Update +/– sign
+                currentExpand.textContent = isOpen ? '+' : '–';
             });
         });
     
-        // Optional: prevent toggle when clicking on internal elements like links/buttons
+        // Prevent row toggle if clicking directly on the expand sign (optional, for precision)
         document.querySelectorAll('.expand').forEach(el => {
             el.addEventListener('click', e => e.stopPropagation());
         });
     </script>
+    
     
     <footer class="main-footer">
         <div class="footer-content">
