@@ -210,6 +210,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
     background: var(--background);
     border: 5px solid var(--secondary);
     position: relative;
+    overflow-x: auto;
 }
 
 /*Folder structure*/
@@ -219,7 +220,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
     top: 2em;
     bottom: 2em;
     left: 2em;
-    width: 250px;
+    width: 120px;
     overflow-y: auto;
     background: var(--background);
     border-right: 1px solid var(--secondary);
@@ -242,8 +243,9 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
 
   .content {
     flex: 1;
-    margin-left: calc(250px + 2em);
+    margin-left: calc(120px + 2em);
     padding: 20px;
+    overflow-x: auto;
   }
 
   .header {
@@ -257,6 +259,9 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
   .header div, .row div {
     flex: 1;
     padding: 5px;
+    min-width: 0; /* ⚠️ Important: allows flex items to shrink */
+    word-wrap: break-word; /* Wrap long words */
+    overflow-wrap: break-word;
   }
 
   .row {
