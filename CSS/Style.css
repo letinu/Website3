@@ -411,7 +411,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
   
   .gallery-item {
     cursor: pointer;
-    border: 2px solid var(--primary);
+    border: 3px solid var(--primary);
     border-radius: 0.5em;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -424,7 +424,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
   
   .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
