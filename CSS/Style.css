@@ -137,11 +137,17 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
 }
 
 .team-grid {
-    display: grid;
-    gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
-    justify-items: center;
-    justify-content: center;
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 in a row by default */
+  justify-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+      grid-template-columns: 1fr; /* Stack vertically on smaller screens */
+  }
 }
 
 .team-member {
