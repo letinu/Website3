@@ -178,7 +178,7 @@ small {font-size: clamp(0.6rem, calc(7vw+0.1rem), 0.75rem); /* 12px */
 }
 
 .team-photo {
-  filter: brightness(0.95) contrast(1.1) hue-rotate(200deg) saturate(0.7);
+  filter: brightness(0.95) contrast(1.1) hue-rotate(140deg) saturate(0.7);
 }
 
 /*Footer*/
