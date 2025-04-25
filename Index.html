@@ -72,68 +72,98 @@
                 </div>
                 
                 <div class="content">
+                    <div class="super-header">
+                        <div class="group-label" data-group="projects" colspan="1">Projects</div>
+                        <div class="group-label" data-group="trips"colspan="1">Trips</div>
+                        <div class="group-label" data-group="short-stories"colspan="1">Short Stories</div>
+                    </div>
+
                     <div class="header">
                         <div>/ DATE</div>
                         <div>/ NAME</div>
                         <div>/ TYPE</div>
                     </div>
                 
-                    <div class="row" data-type="BLOG">
+                    <div class="row" data-type="BLOG" data-group="trips">
                         <div>April 2025</div>
                         <div>Owls in Slovenia</div>
                         <div><span class="tag">BLOG</span><span class="expand">+</span></div>
                     </div>
 
-                    <div class="details hidden">
+                    <div class="details hidden" data-group="trips">
                         <div><strong>Summary:</strong> A trip to Slovenia looking for owls in forest environments.</div>
                         <div><strong>Author:</strong> Tinu</div>
                         <a href="Owls in Slovenia.html" class="read-button">Read</a>
                     </div>
 
-                    <div class="row" data-type="GALLERY">
+                    <div class="row" data-type="GALLERY" data-group="trips">
                         <div>April 2025</div>
                         <div>Friendly eyes hidden in the Forest</div>
                         <div><span class="tag">Gallery</span><span class="expand">+</span></div>
                     </div>
 
-                    <div class="details hidden">
+                    <div class="details hidden" data-group="trips">
                         <div><strong>Summary:</strong> The best shots from the Slovenia trip.</div>
                         <div><strong>Author:</strong> Tinu</div>
                         <a href="Slovenia Gallery.html" class="read-button">Read</a>
                     </div>
                 
-                    <div class="row" data-type="BLOG">
+                    <div class="row" data-type="BLOG" data-group="trips">
                         <div>April 2024</div>
                         <div>Europes oldest Forest in Poland</div>
                     <div><span class="tag">Blog</span><span class="expand">+</span></div>
                     </div>
 
-                    <div class="details hidden">
+                    <div class="details hidden" data-group="trips">
                         <div><strong>Summary:</strong> A trip to the oldest Forest in Europe.</div>
                         <div><strong>Author:</strong> Tinu</div>
                         <a href="your-blog-link.html" class="read-button">Read</a>
                     </div>
 
-                    <div class="row" data-type="GALLERY">
+                    <div class="row" data-type="GALLERY" data-group="trips">
                         <div>April 2023</div>
                         <div>Birding in Hungary</div>
                     <div><span class="tag">Gallery</span><span class="expand">+</span></div>
                     </div>
 
-                    <div class="details hidden">
+                    <div class="details hidden" data-group="trips">
                         <div><strong>Summary:</strong> A Birding trip to Hungary.</div>
                         <div><strong>Author:</strong> Sam</div>
                         <a href="your-blog-link.html" class="read-button">Read</a>
                     </div>
 
-                    <div class="row" data-type="GALLERY">
+                    <div class="row" data-type="GALLERY" data-group="trips">
                         <div>May 2022</div>
                         <div>From Swizerland to Slovenia trough the Alps</div>
                     <div><span class="tag">Gallery</span><span class="expand">+</span></div>
                     </div>
 
-                    <div class="details hidden">
+                    <div class="details hidden" data-group="trips">
                         <div><strong>Summary:</strong> Our frist Hideguys trip.</div>
+                        <div><strong>Author:</strong> Tinu</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+
+                    <div class="row" data-type="BLOG" data-group="short-stories">
+                        <div>Oct 2024</div>
+                        <div>Lake Birding Switzerland</div>
+                    <div><span class="tag">Blog</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden" data-group="short-stories">
+                        <div><strong>Summary:</strong> Visiting a few lakes in Switzerland</div>
+                        <div><strong>Author:</strong> Tinu</div>
+                        <a href="your-blog-link.html" class="read-button">Read</a>
+                    </div>
+
+                    <div class="row" data-type="BLOG" data-group="projects">
+                        <div>Sep 2024</div>
+                        <div>Project 1</div>
+                    <div><span class="tag">Blog</span><span class="expand">+</span></div>
+                    </div>
+
+                    <div class="details hidden" data-group="projects">
+                        <div><strong>Summary:</strong> Projects details</div>
                         <div><strong>Author:</strong> Tinu</div>
                         <a href="your-blog-link.html" class="read-button">Read</a>
                     </div>
@@ -143,6 +173,34 @@
     </div>
 
     <script src="JS/Main.js"></script>
+
+    <script>
+        const groupLabels = document.querySelectorAll('.group-label');
+        const rows = document.querySelectorAll('.row');
+        const details = document.querySelectorAll('.details');
+      
+        groupLabels.forEach(label => {
+          label.addEventListener('click', () => {
+            const selectedGroup = label.getAttribute('data-group');
+      
+            // Hide all rows & details
+            rows.forEach(row => {
+              row.style.display = row.getAttribute('data-group') === selectedGroup ? 'flex' : 'none';
+            });
+            details.forEach(detail => {
+                const match = detail.getAttribute('data-group') === selectedGroup;
+                detail.style.display = match ? '' : 'none'; // reset matching ones
+                detail.classList.add('hidden'); // always hide until clicked
+            });
+            setupRowClickListeners();
+              
+            // Optional: highlight selected label
+            groupLabels.forEach(l => l.classList.remove('active'));
+            label.classList.add('active');
+          });
+        });
+    </script>
+      
 
     <script>
         const typeCheckboxes = document.querySelectorAll('.filter-type');
@@ -163,31 +221,34 @@
         typeCheckboxes.forEach(cb => cb.addEventListener('change', filterRows));
     
         // Handle row click to toggle details and +/–
-        rows.forEach(row => {
-            row.addEventListener('click', () => {
-                const details = row.nextElementSibling;
-                const currentExpand = row.querySelector('.expand');
-    
-                if (!details || !details.classList.contains('details')) return;
-    
-                // Collapse all other details and reset their expand signs
-                document.querySelectorAll('.details').forEach(detail => {
-                    if (detail !== details) detail.classList.add('hidden');
+        function setupRowClickListeners() {
+            const rows = document.querySelectorAll('.row');
+
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const details = row.nextElementSibling;
+                    const currentExpand = row.querySelector('.expand');
+        
+                    if (!details || !details.classList.contains('details')) return;
+        
+                    // Collapse all other details and reset their expand signs
+                    document.querySelectorAll('.details').forEach(detail => {
+                        if (detail !== details) detail.classList.add('hidden');
+                    });
+        
+                    document.querySelectorAll('.expand').forEach(expand => {
+                        if (expand !== currentExpand) expand.textContent = '+';
+                    });
+        
+                    // Toggle current
+                    const isOpen = !details.classList.contains('hidden');
+                    details.classList.toggle('hidden');
                 });
-    
-                document.querySelectorAll('.expand').forEach(expand => {
-                    if (expand !== currentExpand) expand.textContent = '+';
-                });
-    
-                // Toggle current
-                const isOpen = !details.classList.contains('hidden');
-                details.classList.toggle('hidden');
-    
-                // Update +/– sign
-                currentExpand.textContent = isOpen ? '+' : '–';
             });
-        });
-    
+        }
+        // Update +/– sign
+        currentExpand.textContent = isOpen ? '+' : '–';
+
         // Prevent row toggle if clicking directly on the expand sign (optional, for precision)
         document.querySelectorAll('.expand').forEach(el => {
             el.addEventListener('click', e => e.stopPropagation());
